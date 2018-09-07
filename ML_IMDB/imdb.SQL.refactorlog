@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Operations Version="1.0" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+  <Operation Name="Rename Refactor" Key="33cdb0d7-f6b0-4c0e-a169-5242a3573188" ChangeDateTime="09/07/2018 06:48:41">
+    <Property Name="ElementName" Value="[dbo].[title_akas]" />
+    <Property Name="ElementType" Value="SqlTable" />
+    <Property Name="ParentElementName" Value="[dbo]" />
+    <Property Name="ParentElementType" Value="SqlSchema" />
+    <Property Name="NewName" Value="[title_akas_tmp]" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="26d7ea1a-eed0-4f38-8f4b-30483164328b" ChangeDateTime="09/07/2018 06:51:19">
+    <Property Name="ElementName" Value="[dbo].[title_crew]" />
+    <Property Name="ElementType" Value="SqlTable" />
+    <Property Name="ParentElementName" Value="[dbo]" />
+    <Property Name="ParentElementType" Value="SqlSchema" />
+    <Property Name="NewName" Value="[title_crew_tmp]" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="b0d496e4-5b2f-40e0-af67-7e7d258fe170" ChangeDateTime="09/07/2018 06:51:36">
+    <Property Name="ElementName" Value="[dbo].[title_episodes]" />
+    <Property Name="ElementType" Value="SqlTable" />
+    <Property Name="ParentElementName" Value="[dbo]" />
+    <Property Name="ParentElementType" Value="SqlSchema" />
+    <Property Name="NewName" Value="[title_episodes_tmp]" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="0db6fc32-9763-4680-8e9f-d09551642674" ChangeDateTime="09/07/2018 06:51:53">
+    <Property Name="ElementName" Value="[dbo].[title_principals]" />
+    <Property Name="ElementType" Value="SqlTable" />
+    <Property Name="ParentElementName" Value="[dbo]" />
+    <Property Name="ParentElementType" Value="SqlSchema" />
+    <Property Name="NewName" Value="[title_principals_tmp]" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="12e7324c-3808-4862-a8a7-a4f5062a8c35" ChangeDateTime="09/07/2018 06:52:07">
+    <Property Name="ElementName" Value="[dbo].[title_ratings]" />
+    <Property Name="ElementType" Value="SqlTable" />
+    <Property Name="ParentElementName" Value="[dbo]" />
+    <Property Name="ParentElementType" Value="SqlSchema" />
+    <Property Name="NewName" Value="[title_ratings_tmp]" />
+  </Operation>
+</Operations>

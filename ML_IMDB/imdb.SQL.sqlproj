@@ -62,22 +62,29 @@
     <Folder Include="Documents" />
     <Folder Include="dbo\" />
     <Folder Include="dbo\Tables\" />
-    <Folder Include="dbo\Publish Profiles" />
+    <Folder Include="Publish Profiles" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Documents\LICENSE" />
     <None Include="Documents\README.md" />
-    <None Include="dbo\Publish Profiles\imdb.SQL.publish.xml" />
+    <None Include="dbo\Script1.sql" />
+    <None Include="Publish Profiles\imdb.SQL.publish.xml" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="dbo\Tables\name_basics_tmp.sql" />
-    <Build Include="dbo\Tables\title_akas.sql" />
-    <Build Include="dbo\Tables\title_crew.sql" />
-    <Build Include="dbo\Tables\title_episodes.sql" />
-    <Build Include="dbo\Tables\title_principals.sql" />
-    <Build Include="dbo\Tables\title_ratings.sql" />
+    <Build Include="dbo\Tables\title_akas_tmp.sql" />
+    <Build Include="dbo\Tables\title_crew_tmp.sql" />
+    <Build Include="dbo\Tables\title_episodes_tmp.sql" />
+    <Build Include="dbo\Tables\title_principals_tmp.sql" />
+    <Build Include="dbo\Tables\title_ratings_tmp.sql" />
     <Build Include="dbo\Tables\name_basics.sql" />
     <Build Include="dbo\Tables\professions.sql" />
     <Build Include="dbo\Tables\name_basics_professions.sql" />
+    <Build Include="dbo\Tables\name_titles.sql" />
+    <Build Include="dbo\Tables\title_akas.sql" />
+    <Build Include="dbo\Tables\crew_type.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <RefactorLog Include="imdb.SQL.refactorlog" />
   </ItemGroup>
 </Project>
