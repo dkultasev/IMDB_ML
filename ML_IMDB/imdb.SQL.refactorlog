@@ -5,14 +5,14 @@
     <Property Name="ElementType" Value="SqlTable" />
     <Property Name="ParentElementName" Value="[dbo]" />
     <Property Name="ParentElementType" Value="SqlSchema" />
-    <Property Name="NewName" Value="[title_akas_tmp]" />
+    <Property Name="NewName" Value="[TitleInternational_tmp]" />
   </Operation>
   <Operation Name="Rename Refactor" Key="26d7ea1a-eed0-4f38-8f4b-30483164328b" ChangeDateTime="09/07/2018 06:51:19">
-    <Property Name="ElementName" Value="[dbo].[title_crew]" />
+    <Property Name="ElementName" Value="[dbo].[TitleCrew]" />
     <Property Name="ElementType" Value="SqlTable" />
     <Property Name="ParentElementName" Value="[dbo]" />
     <Property Name="ParentElementType" Value="SqlSchema" />
-    <Property Name="NewName" Value="[title_crew_tmp]" />
+    <Property Name="NewName" Value="[TitleCrew_tmp]" />
   </Operation>
   <Operation Name="Rename Refactor" Key="b0d496e4-5b2f-40e0-af67-7e7d258fe170" ChangeDateTime="09/07/2018 06:51:36">
     <Property Name="ElementName" Value="[dbo].[title_episodes]" />

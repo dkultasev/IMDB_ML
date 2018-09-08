@@ -1,4 +1,4 @@
-﻿CREATE TABLE [dbo].[title_akas_tmp] (
+﻿CREATE TABLE [dbo].[TitleInternational_tmp] (
     [titleId]         VARCHAR (MAX) NULL,
     [ordering]        VARCHAR (MAX) NULL,
     [title]           NVARCHAR (MAX) NULL,
@@ -8,4 +8,5 @@
     [attributes]      VARCHAR (MAX) NULL,
     [isOriginalTitle] VARCHAR (MAX) NULL
 );
+
 

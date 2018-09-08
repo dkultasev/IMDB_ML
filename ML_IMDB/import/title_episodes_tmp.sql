@@ -1,6 +1,6 @@
 ﻿CREATE TABLE [dbo].[title_episodes_tmp] (
-    [tconst]        VARCHAR (MAX) NULL,
-    [parentTconst]  VARCHAR (MAX) NULL,
+    [titleId]        VARCHAR (MAX) NULL,
+    [parenttitleId]  VARCHAR (MAX) NULL,
     [seasonNumber]  VARCHAR (MAX) NULL,
     [episodeNumber] VARCHAR (MAX) NULL
 );
