@@ -1,5 +1,7 @@
-﻿BULK INSERT [dbo].[Person_tmp] 
-FROM 'E:\ML\imdb_data\name.basics.tsv\data.tsv' WITH (
+﻿:SETVAR PathToImdbPublicTsvExtractFolder "C:\smf"
+
+BULK INSERT [dbo].[Person_tmp] 
+FROM '$(PathToImdbPublicTsvExtractFolder)\name.basics.tsv\data.tsv' WITH (
   ROWTERMINATOR = '0x0a'
 , FIELDTERMINATOR = '	'
 , FIRSTROW =2 
@@ -18,7 +20,7 @@ FROM [dbo].[Person_tmp]  p;
 
 
 BULK INSERT [dbo].[title_episodes_tmp] 
-FROM 'E:\ML\imdb_data\title.episode.tsv\data.tsv' WITH (
+FROM '$(PathToImdbPublicTsvExtractFolder)\title.episode.tsv\data.tsv' WITH (
   ROWTERMINATOR = '0x0a'
 , FIELDTERMINATOR = '	'
 , FIRSTROW =2 
@@ -33,7 +35,7 @@ FROM [dbo].[title_episodes_tmp]  p
 
 ------------
 BULK INSERT [dbo].[title_principals_tmp] 
-FROM 'E:\ML\imdb_data\title.principals.tsv\data.tsv' WITH (
+FROM '$(PathToImdbPublicTsvExtractFolder)\title.principals.tsv\data.tsv' WITH (
   ROWTERMINATOR = '0x0a'
 , FIELDTERMINATOR = '	'
 , FIRSTROW =2 
@@ -51,7 +53,7 @@ FROM [dbo].[title_principals_tmp]  p
 ------------
 
 BULK INSERT [dbo].[title_ratings_tmp] 
-FROM 'E:\ML\imdb_data\title.ratings.tsv\data.tsv' WITH (
+FROM '$(PathToImdbPublicTsvExtractFolder)\title.ratings.tsv\data.tsv' WITH (
   ROWTERMINATOR = '0x0a'
 , FIELDTERMINATOR = '	'
 , FIRSTROW =2 
@@ -65,7 +67,7 @@ FROM [dbo].[title_ratings_tmp]  p
 ------------
 
 BULK INSERT [dbo].[TitleCrew_tmp] 
-FROM 'E:\ML\imdb_data\title.crew.tsv\data.tsv' WITH (
+FROM '$(PathToImdbPublicTsvExtractFolder)\title.crew.tsv\data.tsv' WITH (
   ROWTERMINATOR = '0x0a'
 , FIELDTERMINATOR = '	'
 , FIRSTROW =2 
@@ -81,7 +83,7 @@ FROM [dbo].[TitleCrew_tmp]  p
 ------------
 
 BULK INSERT [dbo].[TitleInternational_tmp] 
-FROM 'E:\ML\imdb_data\title.akas.tsv\data.tsv' WITH (
+FROM '$(PathToImdbPublicTsvExtractFolder)\title.akas.tsv\data.tsv' WITH (
   ROWTERMINATOR = '0x0a'
 , FIELDTERMINATOR = '	'
 , FIRSTROW =2 
@@ -164,7 +166,7 @@ CAST([titleId]    AS CHAR(10))		  [titleId]
  
 from [TitleInternational_tmp];
 
-insert into [dbo].PersonTitle 
+insert into [dbo].PersonKnownTitle 
 select CAST(n.PersonId AS CHAR(10)), CAST(spl.value AS CHAR(10))
 from dbo.[Person_tmp] n
 CROSS APPLY string_split(n.knownForTitles,',') spl;
@@ -214,3 +216,60 @@ CROSS APPLY string_split(t.writers,',') spl
 CROSS JOIN CrewType ct 
 WHERE t.writers IS NOT NULL
 AND ct.CrewType = 'Writer'
+
+
+
+/* GENERATE TEST DATA */
+
+--insert into imdb1.dbo.title
+--select top 10 *
+--from dbo.Title
+--where avgRating > 7
+--and NbrVotes > 100000
+--order by newid();
+
+--insert into imdb1.dbo.category (categoryname)
+--select categoryname from category;
+
+--insert into imdb1.dbo.crewtype (crewtype)
+--select crewtype from crewtype;
+
+
+--insert into imdb1.dbo.person
+--select distinct p.* FROM imdb1.dbo.title t
+--JOIN TitleCrew tc ON tc.TitleId = t.TitleId
+--JOIN Person p ON p.PersonId = tc.personId;
+
+--insert into imdb1.dbo.TitleCrew
+--select distinct tc.* FROM imdb1.dbo.title t
+--JOIN TitleCrew tc ON tc.TitleId = t.TitleId
+--JOIN Person p ON p.PersonId = tc.personId;
+
+--insert into imdb1.dbo.profession (ProfessionName)
+--select ProfessionName from profession
+
+--insert into imdb1.dbo.PersonProfession
+--select distinct pp.*
+--from PersonProfession pp
+--join imdb1.dbo.person p ON p.PersonId = pp.PersonId
+
+
+--insert into imdb1.dbo.TitleEpisode
+--select distinct te.* FROM imdb1.dbo.title t
+--JOIN TitleEpisode te ON te.TitleId = t.TitleId
+
+--insert into imdb1.dbo.TitleInternational
+--select distinct te.* FROM imdb1.dbo.title t
+--JOIN TitleInternational te ON te.TitleId = t.TitleId
+
+--insert into imdb1.dbo.TitlePerson
+--select distinct te.* FROM imdb1.dbo.title t
+--JOIN TitlePerson te ON te.TitleId = t.TitleId
+
+--insert into imdb1.dbo.TitlePersonCharacter
+--select distinct te.* FROM imdb1.dbo.title t
+--JOIN TitlePersonCharacter te ON te.TitleId = t.TitleId
+
+--insert into imdb1.dbo.PersonKnownTitle
+--select distinct te.* FROM imdb1.dbo.title t
+--JOIN PersonKnownTitle te ON te.TitleId = t.TitleId

@@ -5,8 +5,14 @@
     <TargetDatabaseName>imdb</TargetDatabaseName>
     <DeployScriptFileName>imdb.SQL.sql</DeployScriptFileName>
     <TargetConnectionString>Data Source=localhost;Integrated Security=True;Persist Security Info=False;Pooling=False;MultipleActiveResultSets=False;Connect Timeout=60;Encrypt=False;TrustServerCertificate=True</TargetConnectionString>
-    <BlockOnPossibleDataLoss>True</BlockOnPossibleDataLoss>
+    <BlockOnPossibleDataLoss>False</BlockOnPossibleDataLoss>
     <DropObjectsNotInSource>True</DropObjectsNotInSource>
     <ProfileVersionNumber>1</ProfileVersionNumber>
+    <GenerateSmartDefaults>True</GenerateSmartDefaults>
   </PropertyGroup>
+  <ItemGroup>
+    <SqlCmdVariable Include="IsTestDataNeeded">
+      <Value>0</Value>
+    </SqlCmdVariable>
+  </ItemGroup>
 </Project>
