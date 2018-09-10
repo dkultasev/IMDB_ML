@@ -194,3 +194,23 @@ UPDATE t
 SET t.AvgRating = [averageRating], NbrVotes = [numVotes]
 FROM Title t
 JOIN title_ratings_tmp tm ON tm.[titleId] = t.[titleId];
+
+
+
+insert into titlecrew 
+select titleid, spl.value, ct.CrewTypeId
+from titlecrew_tmp t
+CROSS APPLY string_split(t.directors,',') spl
+CROSS JOIN CrewType ct 
+WHERE t.directors IS NOT NULL
+AND ct.CrewType = 'Director'
+
+
+
+insert into titlecrew 
+select titleid, spl.value, ct.CrewTypeId
+from titlecrew_tmp t
+CROSS APPLY string_split(t.writers,',') spl
+CROSS JOIN CrewType ct 
+WHERE t.writers IS NOT NULL
+AND ct.CrewType = 'Writer'

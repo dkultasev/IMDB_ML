@@ -74,7 +74,6 @@
     <Build Include="dbo\Tables\Person.sql" />
     <Build Include="dbo\Tables\Profession.sql" />
     <Build Include="dbo\Tables\PersonProfession.sql" />
-    <Build Include="dbo\Tables\PersonTitle.sql" />
     <Build Include="dbo\Tables\Title.sql" />
     <Build Include="dbo\Tables\CrewType.sql" />
     <Build Include="dbo\Tables\TitleInternational.sql" />

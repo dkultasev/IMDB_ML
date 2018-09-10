@@ -14,6 +14,6 @@ GO
 
 ALTER TABLE dbo.TitleInternational
 ADD CONSTRAINT fk_TitleInternational#title#PersonId
-    FOREIGN KEY (titleId)
-    REFERENCES dbo.title (titleId);
+    FOREIGN KEY (TitleId)
+    REFERENCES dbo.Title (TitleId);
 GO
