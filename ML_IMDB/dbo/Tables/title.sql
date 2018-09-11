@@ -1,6 +1,6 @@
 ﻿CREATE TABLE dbo.Title
 (
-    TitleId   CHAR(10)      NOT NULL
+    TitleId   CHAR(9)      NOT NULL
   , Title     NVARCHAR(200) NOT NULL
   , Region    VARCHAR(5)    NULL
   , Language  VARCHAR(200)  NULL

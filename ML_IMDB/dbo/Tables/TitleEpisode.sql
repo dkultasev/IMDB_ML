@@ -1,7 +1,7 @@
 ﻿CREATE TABLE dbo.TitleEpisode
 (
-    TitleId       CHAR(10) NOT NULL
-  , ParentTitleId CHAR(10) NOT NULL
+    TitleId       CHAR(9) NOT NULL
+  , ParentTitleId CHAR(9) NOT NULL
   , SeasonNbr     INT      NOT NULL
   , EpisodeNbr    INT      NOT NULL
   , CONSTRAINT pk_TitleId#ParentTitleId#SeasonNbr#EpisodeNbr

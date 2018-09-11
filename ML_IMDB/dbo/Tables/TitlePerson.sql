@@ -1,8 +1,8 @@
 ﻿CREATE TABLE dbo.TitlePerson
 (
-    TitleId    CHAR(10)     NOT NULL
+    TitleId    CHAR(9)     NOT NULL
   , Ordering   TINYINT      NOT NULL
-  , PersonId   CHAR(10)     NOT NULL
+  , PersonId   CHAR(9)     NOT NULL
   , CategoryId TINYINT      NOT NULL
   , Job        VARCHAR(200) NULL
   , CONSTRAINT pk_TitleId#Ordering#PersonId

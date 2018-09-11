@@ -1,7 +1,7 @@
 ﻿CREATE TABLE dbo.UserTitleRating
 (
     CustomReviewerId   INT   NOT NULL
-  , TitleId CHAR(10) NOT NULL
+  , TitleId CHAR(9) NOT NULL
   , Rating DECIMAL(4,2) NOT NULL
   , RatingDtime DATETIME2(7) NOT NULL DEFAULT SYSDATETIME()
   , CONSTRAINT pk_UserId#TitleId

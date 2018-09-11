@@ -109,7 +109,7 @@ CROSS APPLY string_split(primaryProfession,',') spl;
 
 insert into [dbo].[Person] ([PersonId], [primaryName], [birthYear], [deathYear])
 select 
-CAST([PersonId] AS CHAR(10)), CAST([primaryName] AS VARCHAR(20)), CAST([birthYear] AS SMALLINT), CAST([deathYear] AS SMALLINT)
+CAST([PersonId] AS CHAR(9)), CAST([primaryName] AS VARCHAR(20)), CAST([birthYear] AS SMALLINT), CAST([deathYear] AS SMALLINT)
  from [Person_tmp];
 
  insert into [dbo].[PersonProfession] 
@@ -132,7 +132,7 @@ select
 ,[language] 
 From(
 select 
-CAST([titleId]    AS CHAR(10))		  [titleId]   
+CAST([titleId]    AS CHAR(9))		  [titleId]   
 ,CAST([title]  AS NVARCHAR(200))   	  [title]     
 ,CAST([region]    AS VARCHAR(5))	  [region]    
 ,CAST([language]  AS VARCHAR(200))	  [language] 
@@ -156,7 +156,7 @@ insert into dbo.TitleInternational
 
 
 select 
-CAST([titleId]    AS CHAR(10))		  [titleId]   
+CAST([titleId]    AS CHAR(9))		  [titleId]   
 ,CAST(ordering    AS int)		  [titleId]   
 ,CAST([title]  AS NVARCHAR(200))   	  [title]     
 ,CAST([region]    AS VARCHAR(5))	  [region]    
@@ -167,7 +167,7 @@ CAST([titleId]    AS CHAR(10))		  [titleId]
 from [TitleInternational_tmp];
 
 insert into [dbo].PersonKnownTitle 
-select CAST(n.PersonId AS CHAR(10)), CAST(spl.value AS CHAR(10))
+select CAST(n.PersonId AS CHAR(9)), CAST(spl.value AS CHAR(9))
 from dbo.[Person_tmp] n
 CROSS APPLY string_split(n.knownForTitles,',') spl;
 
@@ -182,12 +182,12 @@ from [title_episodes_tmp]
 insert into [Category] (categoryname) select distinct category from [title_principals_tmp];
 
 INSERT into [TitlePerson]
-select CAST(t.titleid AS CHAR(10)), t.ordering, CAST(t.personid AS CHAR(10)), c.categoryid, CAST(t.job AS VARCHAR(200)) from [title_principals_tmp] t
+select CAST(t.titleid AS CHAR(9)), t.ordering, CAST(t.personid AS CHAR(9)), c.categoryid, CAST(t.job AS VARCHAR(200)) from [title_principals_tmp] t
 left join category c on c.categoryname = t.category;
 
 
 insert into [dbo].[TitlePersonCharacter]
-select CAST(titleid AS CHAR(10)), CAST(personid AS CHAR(10)),  REPLACE(REPLACE(spl.value,'["',''),'"]','') from [title_principals_tmp] t
+select CAST(titleid AS CHAR(9)), CAST(personid AS CHAR(9)),  REPLACE(REPLACE(spl.value,'["',''),'"]','') from [title_principals_tmp] t
 cross apply string_split(REPLACE(t.characters,'","','?'),'?') spl
 WHERE t.characters is not NULL;
 

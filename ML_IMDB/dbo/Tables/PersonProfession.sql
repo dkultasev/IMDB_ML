@@ -1,6 +1,6 @@
 ﻿CREATE TABLE dbo.PersonProfession
 (
-    PersonId     CHAR(10) NOT NULL
+    PersonId     CHAR(9) NOT NULL
   , ProfessionId TINYINT  NOT NULL
   , CONSTRAINT pk_PersonId#ProfessionId
         PRIMARY KEY (PersonId, ProfessionId)
