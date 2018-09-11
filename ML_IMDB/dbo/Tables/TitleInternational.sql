@@ -1,6 +1,6 @@
 ﻿CREATE TABLE dbo.TitleInternational
 (
-    titleId         CHAR(9)      NOT NULL
+    TitleId         CHAR(9)      NOT NULL
   , ordering        TINYINT       NOT NULL
   , title           NVARCHAR(200) NOT NULL
   , region          VARCHAR(5)    NULL

@@ -6,9 +6,9 @@ RETURNS TABLE
 AS
     RETURN (
                SELECT      t.TitleId
-                         , Title
-                         , AvgRating
-                         , NbrVotes
+                         , t.Title
+                         , t.AvgRating
+                         , t.NbrVotes
                          , cr.CustomReviewerId
                          , utr.Rating
                  FROM      title              AS t
