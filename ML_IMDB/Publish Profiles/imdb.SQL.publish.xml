@@ -9,11 +9,11 @@
     <DropObjectsNotInSource>True</DropObjectsNotInSource>
     <ProfileVersionNumber>1</ProfileVersionNumber>
     <GenerateSmartDefaults>True</GenerateSmartDefaults>
-    <CreateNewDatabase>False</CreateNewDatabase>
+    <CreateNewDatabase>True</CreateNewDatabase>
   </PropertyGroup>
   <ItemGroup>
     <SqlCmdVariable Include="IsTestDataNeeded">
-      <Value>0</Value>
+      <Value>1</Value>
     </SqlCmdVariable>
   </ItemGroup>
 </Project>
