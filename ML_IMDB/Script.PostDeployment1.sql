@@ -3752,4 +3752,14 @@ BEGIN
 	 INSERT INTO CustomReviewer (CustomReviewerId, CustomReviewerName) VALUES (1, 'Dima'), (2, 'Valera')
 	SET  IDENTITY_INSERT CustomReviewer OFF
   
+  INSERT INTO UserTitleRating
+select
+cr.CustomReviewerId, 
+t.TitleId,
+ ABS(CHECKSUM(NewId())) % 10 + 1 as rating,
+ sysdatetime()
+from title t
+CROSS JOIN [dbo].[CustomReviewer] AS cr
+
+
   END
