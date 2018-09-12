@@ -18,10 +18,15 @@ AS
                   , -1
                   , 'Exception in [dbo].[pUpdateCustomReviewerTitleRating]: Custom reviewer is not found.');
             END;
-
-        UPDATE dbo.UserTitleRating
-           SET Rating = @Rating
-         WHERE TitleId = @TitleId AND CustomReviewerId = @ReviewerId;
-
+		IF (COALESCE(@Rating,0) = 0)
+		BEGIN
+			DELETE FROM dbo.UserTitleRating WHERE TitleId = @TitleId AND CustomReviewerId = @ReviewerId;
+		END
+		ELSE
+		BEGIN
+			UPDATE dbo.UserTitleRating
+			   SET Rating = @Rating
+			 WHERE TitleId = @TitleId AND CustomReviewerId = @ReviewerId;
+		END
         SELECT @@ROWCOUNT AS rows_updated;
     END;
