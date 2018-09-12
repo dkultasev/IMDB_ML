@@ -1,12 +1,12 @@
 ﻿CREATE TABLE [dbo].[TitleInternational_tmp] (
-    [titleId]         VARCHAR (MAX) NULL,
-    [ordering]        VARCHAR (MAX) NULL,
+    [titleId]         NVARCHAR (MAX) NULL,
+    [ordering]        NVARCHAR (MAX) NULL,
     [title]           NVARCHAR (MAX) NULL,
-    [region]          VARCHAR (MAX) NULL,
-    [language]        VARCHAR (MAX) NULL,
-    [types]           VARCHAR (MAX) NULL,
-    [attributes]      VARCHAR (MAX) NULL,
-    [isOriginalTitle] VARCHAR (MAX) NULL
+    [region]          NVARCHAR (MAX) NULL,
+    [language]        NVARCHAR (MAX) NULL,
+    [types]           NVARCHAR (MAX) NULL,
+    [attributes]      NVARCHAR (MAX) NULL,
+    [isOriginalTitle] NVARCHAR (MAX) NULL
 );
 
 
