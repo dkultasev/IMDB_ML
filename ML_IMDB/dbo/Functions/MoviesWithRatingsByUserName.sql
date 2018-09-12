@@ -11,6 +11,7 @@ AS
                          , t.NbrVotes
                          , cr.CustomReviewerId
                          , utr.Rating
+						 , 0 AS TitleYear
                  FROM      title              AS t
                  LEFT JOIN dbo.CustomReviewer AS cr ON cr.CustomReviewerName = @CustomerReviewerName
                  LEFT JOIN UserTitleRating    AS utr ON utr.TitleId          = t.TitleId
