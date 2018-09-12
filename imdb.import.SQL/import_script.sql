@@ -99,6 +99,24 @@ SET [region] = CASE WHEN [region] = '\N' THEN NULL ELSE [region] END
 FROM [dbo].[TitleInternational_tmp]  p
 
 
+BULK INSERT [dbo].[title_basics] 
+FROM '$(PathToImdbPublicTsvExtractFolder)\title.basics.tsv\data.tsv' WITH (
+  ROWTERMINATOR = '0x0a'
+, FIELDTERMINATOR = '	'
+, FIRSTROW =2 
+);  
+
+UPDATE tb
+SET 
+	titleType = CASE WHEN titleType = '\N' THEN NULL ELSE titleType END,
+	primaryTitle = CASE WHEN primaryTitle = '\N' THEN NULL ELSE primaryTitle END,
+	originalTitle = CASE WHEN originalTitle = '\N' THEN NULL ELSE originalTitle END,
+	isAdult = CASE WHEN isAdult = '\N' THEN NULL ELSE isAdult END,
+	startYear = CASE WHEN startYear = '\N' THEN NULL ELSE startYear END,
+	endYear = CASE WHEN endYear = '\N' THEN NULL ELSE endYear END,
+	runtimeMinutes = CASE WHEN runtimeMinutes = '\N' THEN NULL ELSE runtimeMinutes END,
+	genres = CASE WHEN genres = '\N' THEN NULL ELSE genres END
+FROM [dbo].[title_basics] 
 ----- data normalization
 
 INSERT INTO dbo.profession (professionname)

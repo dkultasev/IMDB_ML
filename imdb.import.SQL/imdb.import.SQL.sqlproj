@@ -79,6 +79,7 @@
     <Build Include="dbo\Tables\TitleCrew_tmp.sql" />
     <Build Include="dbo\Tables\TitleInternational_tmp.sql" />
     <None Include="import_script.sql" />
+    <Build Include="dbo\Tables\title_basics.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Publish Profiles\imdb.SQL.publish.xml" />
