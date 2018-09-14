@@ -246,7 +246,7 @@ FROM dbo.Title t
 JOIN [dbo].[title_basics] tb ON t.TitleId = tb.tconst;
 
 
-insert into Genre (genreid)
+insert into Genre (GenreName)
 select DISTINCT spl.value
 from [title_basics] t
 CROSS APPLY string_split(t.genres,',') spl;
@@ -255,5 +255,5 @@ CROSS APPLY string_split(t.genres,',') spl;
 insert into [dbo].TitleGenre 
 select CAST(n.tconst AS CHAR(9)), g.GenreId
 from dbo.[title_basics] n
-CROSS APPLY string_split(n.knownForTitles,',') spl
+CROSS APPLY string_split(n.genres,',') spl
 JOIN dbo.genre g ON CAST(spl.value AS VARCHAR(200)) = g.GenreName
