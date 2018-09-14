@@ -116,7 +116,7 @@ SET
 	endYear = CASE WHEN endYear = '\N' THEN NULL ELSE endYear END,
 	runtimeMinutes = CASE WHEN runtimeMinutes = '\N' THEN NULL ELSE runtimeMinutes END,
 	genres = CASE WHEN genres = '\N' THEN NULL ELSE genres END
-FROM [dbo].[title_basics] ;
+FROM [dbo].[title_basics] tb;
 
 ----- data normalization
 
