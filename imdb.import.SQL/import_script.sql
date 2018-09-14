@@ -116,7 +116,8 @@ SET
 	endYear = CASE WHEN endYear = '\N' THEN NULL ELSE endYear END,
 	runtimeMinutes = CASE WHEN runtimeMinutes = '\N' THEN NULL ELSE runtimeMinutes END,
 	genres = CASE WHEN genres = '\N' THEN NULL ELSE genres END
-FROM [dbo].[title_basics] 
+FROM [dbo].[title_basics] ;
+
 ----- data normalization
 
 INSERT INTO dbo.profession (professionname)
@@ -127,7 +128,7 @@ CROSS APPLY string_split(primaryProfession,',') spl;
 
 insert into [dbo].[Person] ([PersonId], [primaryName], [birthYear], [deathYear])
 select 
-CAST([PersonId] AS CHAR(9)), CAST([primaryName] AS VARCHAR(20)), CAST([birthYear] AS SMALLINT), CAST([deathYear] AS SMALLINT)
+CAST([PersonId] AS CHAR(10)), CAST([primaryName] AS VARCHAR(20)), CAST([birthYear] AS SMALLINT), CAST([deathYear] AS SMALLINT)
  from [Person_tmp];
 
  insert into [dbo].[PersonProfession] 
@@ -185,7 +186,7 @@ CAST([titleId]    AS CHAR(9))		  [titleId]
 from [TitleInternational_tmp];
 
 insert into [dbo].PersonKnownTitle 
-select CAST(n.PersonId AS CHAR(9)), CAST(spl.value AS CHAR(9))
+select CAST(n.PersonId AS CHAR(10)), CAST(spl.value AS CHAR(9))
 from dbo.[Person_tmp] n
 CROSS APPLY string_split(n.knownForTitles,',') spl;
 
@@ -200,12 +201,12 @@ from [title_episodes_tmp]
 insert into [Category] (categoryname) select distinct category from [title_principals_tmp];
 
 INSERT into [TitlePerson]
-select CAST(t.titleid AS CHAR(9)), t.ordering, CAST(t.personid AS CHAR(9)), c.categoryid, CAST(t.job AS VARCHAR(200)) from [title_principals_tmp] t
+select CAST(t.titleid AS CHAR(9)), t.ordering, CAST(t.personid AS CHAR(10)), c.categoryid, CAST(t.job AS VARCHAR(200)) from [title_principals_tmp] t
 left join category c on c.categoryname = t.category;
 
 
 insert into [dbo].[TitlePersonCharacter]
-select CAST(titleid AS CHAR(9)), CAST(personid AS CHAR(9)),  REPLACE(REPLACE(spl.value,'["',''),'"]','') from [title_principals_tmp] t
+select CAST(titleid AS CHAR(9)), CAST(personid AS CHAR(10)),  REPLACE(REPLACE(spl.value,'["',''),'"]','') from [title_principals_tmp] t
 cross apply string_split(REPLACE(t.characters,'","','?'),'?') spl
 WHERE t.characters is not NULL;
 
@@ -233,4 +234,26 @@ from titlecrew_tmp t
 CROSS APPLY string_split(t.writers,',') spl
 CROSS JOIN CrewType ct 
 WHERE t.writers IS NOT NULL
-AND ct.CrewType = 'Writer'
+AND ct.CrewType = 'Writer';
+
+UPDATE t
+SET 
+    TitleType  = CAST(tb.titleType AS VARCHAR(20))
+  , StartYear = CAST(tb.startYear AS SMALLINT)
+  , EndYear  = CAST(tb.endYear AS SMALLINT)
+  , Duration = CAST(tb.runtimeMinutes AS INT)
+FROM dbo.Title t
+JOIN [dbo].[title_basics] tb ON t.TitleId = tb.tconst;
+
+
+insert into Genre (genreid)
+select DISTINCT spl.value
+from [title_basics] t
+CROSS APPLY string_split(t.genres,',') spl;
+
+
+insert into [dbo].TitleGenre 
+select CAST(n.tconst AS CHAR(9)), g.GenreId
+from dbo.[title_basics] n
+CROSS APPLY string_split(n.knownForTitles,',') spl
+JOIN dbo.genre g ON CAST(spl.value AS VARCHAR(200)) = g.GenreName

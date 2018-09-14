@@ -1,7 +1,7 @@
 ﻿CREATE TABLE dbo.TitlePersonCharacter
 (
     TitleId   CHAR(9)       NOT NULL
-  , PersonId  CHAR(9)       NOT NULL
+  , PersonId  CHAR(10)       NOT NULL
   , Character NVARCHAR(1000) NOT NULL
 );
 GO

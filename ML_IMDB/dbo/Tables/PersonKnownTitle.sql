@@ -1,6 +1,6 @@
 ﻿CREATE TABLE dbo.PersonKnownTitle
 (
-    PersonId CHAR(9) NOT NULL
+    PersonId CHAR(10) NOT NULL
   , TitleId  CHAR(9) NOT NULL
   , CONSTRAINT pk_PersonId#TitleId
         PRIMARY KEY (PersonId, TitleId)
