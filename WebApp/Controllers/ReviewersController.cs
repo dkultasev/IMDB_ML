@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using WebApp.Infrastructure;
 using WebApp.Models;
 
 namespace WebApp.Controllers
@@ -12,14 +14,16 @@ namespace WebApp.Controllers
     [Route("api/Reviewers")]
     public class ReviewersController : Controller
     {
+        private readonly ImdbContext _context;
+
+        public ReviewersController(ImdbContext context)
+        {
+            _context = context;
+        }
+
         public Reviewer[] Reviewers()
         {
-            //todo: will get these values from database later
-            return new []
-            {
-                new Reviewer(){Id = 1, Name = "Dima"},
-                new Reviewer(){Id = 2, Name = "Valera"},
-            };
+            return _context.Reviewers.AsNoTracking().ToArray();
         }
     }
 }
