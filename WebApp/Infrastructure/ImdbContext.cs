@@ -15,10 +15,12 @@ namespace WebApp.Infrastructure
         }
 
         public DbSet<Reviewer> Reviewers { get; set; }
+        public DbSet<MovieReview> MovieReviews { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new ReviewerMap());
+            modelBuilder.ApplyConfiguration(new MovieReviewMap());
         }
     }
 }

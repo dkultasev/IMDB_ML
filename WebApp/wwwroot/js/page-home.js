@@ -11,9 +11,11 @@
     <v-container>
       <v-layout align-start column>
         <v-flex xs4>
-            <user-picker @user-selected="onUserSelected"></user-picker>
+          <user-picker @user-selected="onUserSelected"></user-picker>
         </v-flex>
-        <v-flex>Will load info for user id: <b>{{selectedUserId}}</b></v-flex>
+        <v-flex>
+          <user-reviews :user-id="selectedUserId"></user-reviews>
+        </v-flex>
       </v-layout>
     </v-container>
     `

@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
+using Dapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using WebApp.Infrastructure;
 using WebApp.Models;
 
@@ -21,9 +23,12 @@ namespace WebApp.Controllers
             _context = context;
         }
 
+        [HttpGet]
         public Reviewer[] Reviewers()
         {
-            return _context.Reviewers.AsNoTracking().ToArray();
+            return QueryableExtensions.AsNoTracking(_context.Reviewers).ToArray();
         }
+
+
     }
 }
