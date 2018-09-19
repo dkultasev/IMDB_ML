@@ -2,7 +2,7 @@
 (
     TitleId   CHAR(9)		NOT NULL
   , Title     NVARCHAR(200) NOT NULL
-  , TitleType VARCHAR(20)	NOT NULL
+  , TitleType VARCHAR(20)	NULL
   , StartYear SMALLINT		NULL
   , EndYear   SMALLINT		NULL
   , Duration  INT		NULL
