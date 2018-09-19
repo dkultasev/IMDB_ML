@@ -70,7 +70,6 @@
     <Folder Include="Schemas\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Documents\LICENSE" />
     <None Include="Documents\README.md" />
     <None Include="Publish Profiles\imdb.SQL.publish.xml" />
   </ItemGroup>
