@@ -3821,4 +3821,6 @@ INSERT INTO titlegenre
  ,(N'tt1396484',26)
  ,(N'tt3774114',26)
 
+ :r .\features.sql
   END
+

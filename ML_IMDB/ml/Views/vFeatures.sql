@@ -44,7 +44,7 @@
          , a.Adventure
          , a.Adult
          , a.Action
-      FROM (   SELECT t.titleid
+      FROM (   SELECT t.TitleId
                     , t.Title
                     , g.GenreId
                     , g.GenreName
@@ -59,6 +59,7 @@
                                   , Family, Fantasy, [Film-Noir], [Game-Show], History, Horror, Music, Musical, Mystery
                                   , News, [Reality-TV], Romance, [Sci-Fi], Short, Sport, [Talk-Show], Thriller, War
                                   , Western)) AS a;
+	
 
 
 
