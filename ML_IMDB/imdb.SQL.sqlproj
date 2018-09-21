@@ -68,7 +68,6 @@
     <Folder Include="ml\" />
     <Folder Include="ml\Views\" />
     <Folder Include="Schemas\" />
-    <Folder Include="dbo\Views" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Documents\README.md" />
@@ -94,7 +93,6 @@
     <Build Include="dbo\Tables\TitleGenre.sql" />
     <Build Include="ml\Views\vFeatures.sql" />
     <Build Include="Schemas\ml.sql" />
-    <Build Include="dbo\Views\vFeatures.sql" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="Script.PostDeployment1.sql" />
