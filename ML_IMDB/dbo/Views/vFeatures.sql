@@ -1,6 +1,11 @@
 ﻿CREATE VIEW dbo.vFeatures
 AS
-    SELECT a.Western
+    SELECT a.titleid
+         , a.Title
+         , a.AvgRating
+         , a.Duration
+         , a.StartYear
+         , a.Western
          , a.War
          , a.Thriller
          , a.[Talk-Show]
@@ -37,7 +42,7 @@ AS
                     , t.StartYear
                  FROM dbo.Title      AS t
                  JOIN dbo.TitleGenre AS pkt ON pkt.TitleId = t.TitleId
-                 JOIN dbo.Genre      AS g ON g.GenreId     = pkt.GenreId) AS c
+                 JOIN dbo.Genre      AS g ON g.GenreId     = pkt.GenreId) AS t
       PIVOT (   COUNT(GenreId)
                   FOR GenreName IN (Action, Adult, Adventure, Animation, Biography, Comedy, Crime, Documentary, Drama
                                   , Family, Fantasy, [Film-Noir], [Game-Show], History, Horror, Music, Musical, Mystery
