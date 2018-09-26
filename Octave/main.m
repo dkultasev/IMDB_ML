@@ -9,19 +9,10 @@ try
     durationNormalized = featureNormalize(features(:,1));
     features(:,1) = durationNormalized;
 
-    features
-    
-    
+    K = 54;
 
-
-
-
-
-
-
-
-
-
+    randomIndexes = randperm(rows(features));
+    randomK = features(randomIndexes(1:K),:);
 
 
     pause
